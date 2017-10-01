@@ -1,0 +1,83 @@
+{% extends "neoyoutube/index.html" %}
+{% block content %}
+  <div class="row grey lighten-3" style="padding-top: 50px; padding-bottom: 50px">
+  <div class="row">
+    <div class="col s8">
+      <div class="card-content">
+        <iframe width="854" height="480" src="https://www.youtube.com/embed/{{ id }}" frameborder="0" allowfullscreen></iframe>
+      </div>
+      <div class="card">
+        <div class="card-content">
+              <span class="card-title">{{ data.videoInfo.snippet.title }}</span>
+              <div class="row grey-text text-darken-1">
+                <div class="left">
+                  <p>
+                    <b><u>
+                      <a href="/channel?channelid={{data.videoInfo.snippet.channelId}}" class="black-text tooltipped" data-position="right" data-delay="30" data-tooltip="Visit Channel">
+                        {{ data.videoInfo.snippet.channelTitle }}
+                      </a>
+                    </u></b>
+                  </p>
+                </div>
+                <div class="right">
+                  <p>
+                    {{data.videoInfo.statistics.viewCount}} views
+
+                  </p>
+                </div>
+              </div>
+                <div class="row">
+                  <div style="padding-left: 0px; padding-top:0px; bottom:5px">
+                    <ul class="collapsible z-depth-0" data-collapsible="accordion">
+                      <li>
+                        <div class="collapsible-header ">
+                          <p>
+                        <div class="center">
+                          Show Description
+                        </div>
+                        </p>
+                        </div>
+                        <div class="collapsible-body">
+                          <span>{{ data.videoInfo.snippet.description}}</span>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+
+                </div>
+        </div>
+      </div>
+    </div>
+    <div class="col s4 white" style="overflow-y: scroll; height:1000px;">
+      {% for vi in recommends%}
+      <a href = "/watch?id={{vi.videoInfo.id}}">
+        <div class="card horizontal hoverable grey-text text-darken-2">
+          <div class="card-image">
+            <img src="{{ vi.videoInfo.snippet.thumbnails.medium.url  }}" height="150" style="padding:10px;">
+          </div>
+          <div class="card-stacked">
+            <div class="card-content" style="padding:0px; padding-top:5px">
+              <p>
+                <b>{{ vi.videoInfo.snippet.localized.title }}</b>
+              </p>
+              <p>
+                <span style = "font-size:10px">{{ vi.videoInfo.snippet.channelTitle}}</span>
+              </p>
+              <p>
+                <span><i class="material-icons dp48">visibility</i><sup style = "font-size:14px"> {{vi.videoInfo.statistics.viewCount }} </sup></span>
+              </p>
+              </div>
+            </div>
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+  </div>
+</div>
+<script type="text/javascript">
+
+$('document').ready(function(){
+  $('.collapsible').collapsible();
+});
+</script>
+{% endblock content %}

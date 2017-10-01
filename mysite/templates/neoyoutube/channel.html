@@ -1,0 +1,21 @@
+{% extends "neoyoutube/index.html" %}
+{% block content %}
+<div class="row">
+ {% for data in channel_videos %}
+ <div class="col s3">
+   <a href="watch/?id={{data.videoInfo.id}}" class="black-text">
+     <div class="card z-depth-2 grey lighten-4">
+       <div class="card-image" style = "padding-left: 10px; padding-right: 10px; padding-top: 10px">
+         <img src="{{ data.videoInfo.snippet.thumbnails.medium.url  }}">
+       </div>
+       <div class="card-content">
+         <p  class="truncate"><b>{{ data.videoInfo.snippet.localized.title }}</b></p>
+            <span style = "font-size:14px"> {{ data.videoInfo.snippet.channelTitle}}</span>
+            <span style = "position: absolute; right: 20px; bottom: 0px;"><i class="material-icons dp48">visibility</i><b><sup style = "font-size:14px">{{data.videoInfo.statistics.viewCount }}</sup></b></span>
+        </div>
+      </div>
+    </a>
+  </div>
+{% endfor %}
+</div>
+{% endblock content %}

@@ -1,0 +1,82 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<!--Import Google Icon Font-->
+<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!--Import materialize.css-->
+
+<link type="text/css" rel="stylesheet" href="{% static 'materialize/css/materialize.min.css' %}"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<style>
+#searchButton{
+  cursor: pointer;
+}
+</style>
+
+<title>
+	Neo Youtube
+
+</title>
+</head>
+<body>
+  <div class="navbar-fixed">
+    <nav>
+      <div class="nav-wrapper white">
+        <form method="GET" action="/search_query" id="searchForm">
+          <div class="input-field">
+            <input id="search" type="search" required name="search">
+            <label class="label-icon offset-s2" for="search">
+              <i id="searchButton" class="material-icons  grey-text text-darken-5 ">&nbsp;&nbsp;search&nbsp;&nbsp;</i>
+            </label>
+            <i class="material-icons">close</i>
+          </div>
+        </form>
+      </div>
+    </nav>
+  </div>
+<nav>
+  <div class="nav-wrapper teal">
+      <a href="/" class="brand-logo"> Youtube Neo</a>
+      <ul class="right hide-on-med-and-down">
+        {% if not flag %}
+        <li>
+          <a class="waves-effect waves-light btn blue-grey lighten-5"  href="/login">
+            <span class="blue-grey-text text-darken-4">Login</span>
+          </a>
+        </li>
+        <li>
+          <a class="waves-effect waves-light btn blue-grey lighten-5"  href="/register">
+            <span class="blue-grey-text text-darken-4">
+              SignUp
+            </span>
+          </a>
+        </li>
+      {% else %}
+      <li>
+        <a class="waves-effect waves-light btn blue-grey lighten-5"  href="/logout">
+          <span class="blue-grey-text text-darken-4">
+            Logout
+          </span>
+        </a>
+      </li>
+      {% endif %}
+      </ul>
+    </div>
+</nav>
+	{% block content %}
+
+	{% endblock content %}
+	<!--Import jQuery before materialize.js-->
+	<script type="text/javascript" src="{% static 'jquery/jquery-3.2.1.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'materialize/js/materialize.min.js' %}"></script>
+  <script type="text/javascript">
+    document.getElementById("searchButton").onclick = function() {
+      document.getElementById("searchForm").submit();
+    }
+  </script>
+</body>
+</html>

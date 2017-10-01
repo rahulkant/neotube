@@ -1,0 +1,58 @@
+{% extends "neoyoutube/index.html" %}
+{% block content %}
+<div class="row grey lighten-3" style="margin:0px">
+  <div class="container" style="padding-top: 50px; padding-bottom: 50px">
+    <ul class="pagination center" style="margin:0px">
+      {% for i in page_range %}
+      {% if i == page %}
+      <li class="active teal"><a href="?search={{query}}&page={{page}}">{{ i }}</a></li>
+      {% else %}
+      <li class="waves-effect"><a href="?search={{query}}&page={{ i }}">{{ i }}</a></li>
+      {% endif%}
+
+      {% endfor%}
+    </ul>
+  {% for data in video_data  %}
+  <a href = "/watch?id={{data.videoInfo.id}}">
+    <div class="card horizontal z-depth-5 grey-text text-darken-1 hoverable">
+      <div class="card-image">
+        <img src="{{ data.videoInfo.snippet.thumbnails.default.url  }}" height="150" style="padding:10px;">
+      </div>
+      <div class="card-stacked">
+        <div class="card-content" style="padding:8px">
+          <b>
+              {{ data.videoInfo.snippet.localized.title }}
+          </b>
+          <p>
+
+            <span style = "font-size:14px"><b>{{ data.videoInfo.snippet.channelTitle}}</b></span>
+          </p>
+          <p>
+            <span><i class="material-icons dp48">visibility</i><b><sup style = "font-size:14px"> {{data.videoInfo.statistics.viewCount }} </sup></b></span>
+          </p>
+          <p>{{ data.videoInfo.snippet.localized.description }}</p>
+        </div>
+      </div>
+    </div>
+  </a>
+
+  {% endfor %}
+</div>
+<ul class="pagination center">
+  {% for i in page_range %}
+  {% if i == page %}
+    <li class="active teal"><a href="?search={{query}}&page={{page}}">{{ i }}</a></li>
+  {% else %}
+    <li class="waves-effect"><a href="?search={{query}}&page={{ i }}">{{ i }}</a></li>
+  {% endif%}
+
+  {% endfor%}
+</ul>
+</div>
+<!--
+<script type="text/javascript">
+  document.onload = function() {
+    document.getElementsById('search').Value = '{{ query }}';
+  }
+</script> -->
+{% endblock content %}

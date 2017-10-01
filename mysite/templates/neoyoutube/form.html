@@ -1,0 +1,77 @@
+
+{% extends "neoyoutube/base.html" %}
+
+
+
+
+
+{% block content %}
+<div class="center">
+<div class="row">
+        <div class="col s12 m6">
+          <div class="card">
+            <div class="card-content white-text">
+              <span class="card-title  teal-text text-darken-4 center"><b>Register</b></span>
+              <p>
+  <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="id_username" type="text" class="validate" required="">
+          <label for="id_username">Username</label>
+        </div> teal darken-4
+        <div class="input-field col s12">
+          <input id="id_email"  name = "email" type="text" class="validate" required="">
+          <label for="id_email">Email address:</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="id_email2" name="email2" type="text" class="validate" required="">
+          <label for="id_email2">Confirm Email:</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="id_password" name="password" type="password" class="validate" required="">
+          <label for="id_password">Password:</label>
+        </div>
+      </div>
+
+	<input type='submit' class="btn waves-effect waves-light" value='{{title}}' />
+    </form>
+  </div>
+</p>
+    </div>
+</div>
+</div>
+<!--   <div class="container">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+          <input placeholder="Placeholder" id="id_username" type="text" class="validate" required="">
+          <label for="id_username">Username</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="id_email"  name = "email" type="text" class="validate" required="">
+          <label for="id_email">Email address:</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="id_email2" name="email2" type="text" class="validate" required="">
+          <label for="id_email2">Confirm Email:</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="id_password" name="password" type="password" class="validate" required="">
+          <label for="id_password">Password:</label>
+        </div>
+      </div>
+
+	<input type='submit' class="btn waves-effect waves-light" value='{{title}}' />
+    </form>
+  </div>
+ -->
+{% endblock content %}
